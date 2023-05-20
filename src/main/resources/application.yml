@@ -1,0 +1,9 @@
+#spring:
+#  data:
+#    mongodb:
+#      host:
+#      port:
+#      authentication-database:
+#      username:
+#      password:
+#      database:
