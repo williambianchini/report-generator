@@ -73,7 +73,7 @@ public class XlsExportUtil {
         createCell(row, 6, "totalWithTaxes", style);
     }
 
-    private void writeReportData(){
+    private void writeOrderSimpleData(){
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         int rowCount = 2;
         CellStyle style = workbook.createCellStyle();
@@ -97,9 +97,9 @@ public class XlsExportUtil {
 
     public void exportOrderSimpleToXLS(HttpServletResponse response, OrderRequestKeyType orderRequestKeyType) throws IOException {
         createHeaderRow(orderRequestKeyType);
-        writeReportData();
+        writeOrderSimpleData();
         ServletOutputStream outputStream = response.getOutputStream();
-        String fileName = OrderRequestKeyType.ORDER_SIMPLE.getArchiveName() + FormatType.XLS.getLabel().toLowerCase();
+        String fileName = OrderRequestKeyType.ORDER_SIMPLE.getArchiveName() + "." + FormatType.XLS.getLabel().toLowerCase();
         String headerKey = "Content-Disposition";
         response.addHeader(headerKey, fileName);
         workbook.write(outputStream);
